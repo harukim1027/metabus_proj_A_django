@@ -41,8 +41,12 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "corsheaders",
     # local apps
-    'streetanimal',
-    'accounts',
+    'streetanimal',  #유기동물
+    'accounts', #계정
+    'adopt', # 입양
+    'inquiry_board', # 문의게시판
+    'notice', # 공지사항
+
 ]
 
 if DEBUG:
