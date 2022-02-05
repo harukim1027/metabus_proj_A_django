@@ -1,5 +1,5 @@
 from django.contrib import admin
-from adopt.models import Review
+from adopt_review.models import Review
 
 @admin.register(Review)
 class ArticleAdmin(admin.ModelAdmin):

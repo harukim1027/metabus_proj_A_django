@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from adopt.models import Review
+from adopt_review.models import Review
 from django.contrib.auth import get_user_model
 
 
