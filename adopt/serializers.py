@@ -2,6 +2,7 @@ from rest_framework import serializers
 from adopt.models import Review
 from django.contrib.auth import get_user_model
 
+
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
@@ -13,5 +14,5 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ["id", "title", "content", "nickname"]
+        fields = ["id", "nickname", "title", "content", "image"]
 
