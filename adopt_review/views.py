@@ -11,8 +11,8 @@ from rest_framework.generics import (
     UpdateAPIView,
     RetrieveAPIView,
 )
-from adopt.models import Review
-from adopt.serializers import (
+from adopt_review.models import Review
+from adopt_review.serializers import (
     ReviewSerializer,
 )  # ArticleAnonymousSerializer, ArticleGoldMembershipSerializer,
 
