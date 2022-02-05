@@ -8,10 +8,10 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = ["nickname"]
 
 
-class ArticleSerializer(serializers.ModelSerializer):
-    author = AuthorSerializer(read_only=True)
+class ReviewSerializer(serializers.ModelSerializer):
+    nickname = AuthorSerializer(read_only=True)
 
     class Meta:
         model = Review
-        fields = ["id", "title", "content", "photo", "nickname"]
+        fields = ["id", "title", "content", "nickname"]
 
