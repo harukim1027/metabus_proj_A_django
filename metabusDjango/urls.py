@@ -6,7 +6,7 @@ from django.urls import path, include
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-
+    path('adopt_review/', include("adopt_review.urls")),
 ]
 
 if settings.DEBUG:
