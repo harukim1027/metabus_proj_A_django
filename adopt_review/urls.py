@@ -6,7 +6,7 @@ from adopt_review.views import ReviewViewSet
 app_name = "adopt_review"
 
 router = DefaultRouter()
-router.register("posts", ReviewViewSet)
+router.register("reviews", ReviewViewSet)
 
 urlpatterns = [
     path("api/", include(router.urls)),
