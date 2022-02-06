@@ -12,3 +12,4 @@ router.register("animal", AnimalViewSet)
 urlpatterns = [
     path("api/", include(router.urls)),
 ]
+
