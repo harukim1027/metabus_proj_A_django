@@ -27,8 +27,7 @@ class User(AbstractUser):
     last_name = None
     date_joined = None
 
-
-    userID = models.CharField(max_length=18, unique=True, null=False,primary_key=True)
+    userID = models.CharField(max_length=18, unique=True, null=False, primary_key=True)
     nickname = models.CharField(max_length=20, unique=True, null=False)
     name = models.CharField(
         max_length=30

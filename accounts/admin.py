@@ -7,10 +7,10 @@ from .models import User
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None, {
-            'fields': ('username', 'password', 'email', 'phone_num')
+            'fields': ('userID', 'password', 'email', 'phone_number')
         }),
         ('Personal info', {
-            'fields': ('gender', 'birthdate', 'position')
+            'fields': ('nickname', 'name', 'region')
         }),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
@@ -29,4 +29,4 @@ class CustomUserAdmin(UserAdmin):
     # updated_at: DATETIME NOT NULL
 
     #
-    list_display = ('nickname', 'name', 'is_active', 'phone_number','email')
+    list_display = ('nickname', 'name', 'is_active', 'phone_number', 'email')
