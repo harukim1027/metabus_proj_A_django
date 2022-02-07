@@ -17,9 +17,23 @@ class UserCreationSerializer(serializers.ModelSerializer):
     )
     password2 = serializers.CharField(write_only=True, required=True)
 
+    # nickname: CHAR(20) NOT NULL
+    # name: CHAR(30) NOT NULL
+    # password: CHAR(20) NOT NULL
+    # phone_number: CHAR(16) NOT NULL
+    # email: CHAR(50) NOT NULL
+    # region: CHAR(20) NOT NULL
+    # password_quiz: CHAR(30) NOT NULL
+    # password_quiz_answer: CHAR(30) NOT NULL
+    # created_at: DATETIME NOT NULL
+    # updated_at: DATETIME NOT NULL
+
+    #
+
     class Meta:
         model = User
-        fields = ["userID", "nickname", 'name', "password", "password2", "phone_number", "email", "region", "password_quiz",
+        fields = ["userID", "nickname", 'name', "password", "password2", "phone_number", "email", "region",
+                  "password_quiz",
                   "password_quiz_answer"]
 
     def validate(self, attrs):
@@ -31,13 +45,15 @@ class UserCreationSerializer(serializers.ModelSerializer):
         userID = validated_data["userID"]
         nickname = validated_data["nickname"]
         name = validated_data['name']
+        phone_number = validated_data['phone_number']
         password = validated_data["password"]
         email = validated_data['email']
         region = validated_data["region"]
         password_quiz = validated_data['password_quiz']
         password_quiz_answer = validated_data['password_quiz_answer']
 
-        new_user = User(usrerID=userID, nickname=nickname, name=name, email=email, region=region, password_quiz=password_quiz,
+        new_user = User(usrerID=userID, nickname=nickname, name=name, phone_number=phone_number, email=email,
+                        region=region, password_quiz=password_quiz,
                         password_quiz_answer=password_quiz_answer)
         new_user.set_password(password)
         new_user.save()

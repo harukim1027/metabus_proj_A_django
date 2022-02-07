@@ -20,6 +20,13 @@ from django.db import models
 
 
 class User(AbstractUser):
+    USERNAME_FIELD = 'nickname'
+    REQUIRED_FIELDS = []
+    first_name = None
+    last_name = None
+    date_joined = None
+
+
     userID = models.CharField(max_length=18, unique=True, null=False)
     nickname = models.CharField(max_length=20, unique=True, null=False)
     name = models.CharField(
@@ -63,3 +70,5 @@ class User(AbstractUser):
         blank=True)
 
     password_quiz_answer = models.CharField(max_length=30)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

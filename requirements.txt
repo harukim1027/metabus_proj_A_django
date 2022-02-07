@@ -1,1 +1,2 @@
 -r requirements/prod.txt
+decorators~=2.0.7
