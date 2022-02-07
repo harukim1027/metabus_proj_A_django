@@ -20,6 +20,7 @@ from django.db import models
 
 
 class User(AbstractUser):
+    # createsuperuser를 할 시에, 받을 username 필드를 뭘로 지정?
     USERNAME_FIELD = 'userID'
     REQUIRED_FIELDS = []
     first_name = None
