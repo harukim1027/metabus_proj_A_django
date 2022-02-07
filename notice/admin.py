@@ -5,7 +5,7 @@ from notice.models import Notice
 
 @admin.register(Notice)
 class NoticeAdmin(admin.ModelAdmin):
-    list_display = ["number", "title"]
+    list_display = ["notice_no", "title"]
     list_display_links = ["title"]
     search_fields = ["title"]
 
