@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     # local apps
     'streetanimal',  # 유기동물
     'accounts',  # 계정
-    'manageraccounts',  # 관리자 계정
     'adopt_review',  # 입양
     'inquiry_board',  # 문의게시판
     'notice',  # 공지사항
@@ -54,7 +53,6 @@ if DEBUG:
     INSTALLED_APPS += [
         'debug_toolbar',
     ]
-
 
 
 MIDDLEWARE = [
