@@ -2,7 +2,6 @@ from django.conf import settings
 from django.db import models
 
 from accounts.models import User
-from manageraccounts.models import ManagerAcc
 
 
 class TimestampedModel(models.Model):
@@ -18,5 +17,5 @@ class Inquiry(TimestampedModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     content = models.TextField()
-    admin_id = models.ForeignKey(ManagerAcc, on_delete=models.CASCADE, blank=True)
     admin_answer = models.TextField(blank=True)
+
