@@ -11,7 +11,7 @@ class TimestampedModel(models.Model):
 
 
 class Notice(TimestampedModel):
-    number = models.AutoField(primary_key=True)
+    notice_no = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)
     content = models.TextField()
 

@@ -13,7 +13,7 @@ class TimestampedModel(models.Model):
 
 
 class Inquiry(TimestampedModel):
-    number = models.AutoField(primary_key=True)
+    inquiry_no = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     content = models.TextField()
