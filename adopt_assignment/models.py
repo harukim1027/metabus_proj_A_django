@@ -13,7 +13,7 @@ class TimestampedModel(models.Model):
 
 
 class AdoptAssignment(TimestampedModel):
-    adopt_assignment_no = models.AutoField(primary_key=True)
+    assignment_no = models.AutoField(primary_key=True)
     monthly_income = models.IntegerField()
     residential_type = models.CharField(max_length=10, choices=[
         ("Apartment", "Apartment"),

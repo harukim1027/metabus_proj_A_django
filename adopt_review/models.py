@@ -24,5 +24,5 @@ class Review(TimestampedModel):
                              ])
     content = models.TextField()
     image = models.ImageField(blank=True)
-    adopt_assignment = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE)
+    adopt_assignment = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE, blank=False)
 
