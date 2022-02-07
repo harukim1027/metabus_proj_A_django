@@ -22,14 +22,14 @@ from django.db import models
 class User(AbstractUser):
     # createsuperuser를 할 시에, 받을 username 필드를 뭘로 지정?
     USERNAME_FIELD = 'userID'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
     first_name = None
     last_name = None
     date_joined = None
 
     userID = models.CharField(max_length=18, unique=True, null=False, primary_key=True)
     nickname = models.CharField(max_length=20, unique=True, null=False)
-    name = models.CharField(
+    username = models.CharField(
         max_length=30
         , null=False
     )

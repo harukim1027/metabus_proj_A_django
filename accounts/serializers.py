@@ -32,7 +32,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["userID", "nickname", 'name', "password", "password2", "phone_number", "email", "region",
+        fields = ["userID", "nickname", 'username', "password", "password2", "phone_number", "email", "region",
                   "password_quiz",
                   "password_quiz_answer"]
 
@@ -44,7 +44,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         userID = validated_data["userID"]
         nickname = validated_data["nickname"]
-        name = validated_data['name']
+        username = validated_data['username']
         phone_number = validated_data['phone_number']
         password = validated_data["password"]
         email = validated_data['email']
@@ -52,7 +52,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
         password_quiz = validated_data['password_quiz']
         password_quiz_answer = validated_data['password_quiz_answer']
 
-        new_user = User(usrerID=userID, nickname=nickname, name=name, phone_number=phone_number, email=email,
+        new_user = User(usrerID=userID, nickname=nickname, username=username, phone_number=phone_number, email=email,
                         region=region, password_quiz=password_quiz,
                         password_quiz_answer=password_quiz_answer)
         new_user.set_password(password)
