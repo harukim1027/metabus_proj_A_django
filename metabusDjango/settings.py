@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'adopt_review',  # 입양
     'inquiry_board',  # 문의게시판
     'notice',  # 공지사항
+    'attached_files',  # 첨부파일
 
 ]
 
@@ -53,7 +54,6 @@ if DEBUG:
     INSTALLED_APPS += [
         'debug_toolbar',
     ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,14 +65,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 if DEBUG:
     MIDDLEWARE = [
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-    ] + MIDDLEWARE
-
-
-
+                     'debug_toolbar.middleware.DebugToolbarMiddleware',
+                 ] + MIDDLEWARE
 
 ROOT_URLCONF = 'metabusDjango.urls'
 
@@ -159,10 +155,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
 INTERNAL_IPS = ['127.0.0.1']
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -170,5 +163,3 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
-
-
