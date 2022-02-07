@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'adopt_review',  # 입양
     'inquiry_board',  # 문의게시판
     'notice',  # 공지사항
-    'images', # 이미지
 
 ]
 
