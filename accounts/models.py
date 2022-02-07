@@ -46,16 +46,18 @@ class User(AbstractUser):
     email = models.EmailField(max_length=50, unique=True, null=False)
 
     region = models.CharField(
-        max_length=2,
+        max_length=7,
         choices=[
-            ("Se", "Seoul"),
-            ("Bu", "Busan"),
-            ("Gu", "Daegu"),
-            ("In", "Incheon"),
-            ("Da", "Daejeon"),
-            ("Se", "Sejong"),
-            ("Je", "Jeju"),
-            ("Ga", "Gangwon"),
+            ("Seoul", "Seoul"),
+            ("Busan", "Busan"),
+            ("Daegu", "Daegu"),
+            ("Incheon", "Incheon"),
+            ("Daejeon", "Daejeon"),
+            ("Sejong", "Sejong"),
+            ("Gwangju", "Gwangju"),
+            ("Ulsan", "Ulsan"),
+            ("Jeju", "Jeju"),
+            ("Gangwon", "Gangwon"),
         ],
         blank=False)
 
