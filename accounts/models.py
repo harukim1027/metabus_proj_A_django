@@ -1,6 +1,7 @@
+from django.contrib.auth.base_user import BaseUserManager
 from django.core.validators import RegexValidator
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 
 
@@ -17,6 +18,37 @@ from django.db import models
 # updated_at: DATETIME NOT NULL
 
 #
+
+class CustomUserManager(UserManager):
+    def create_user(self, userID, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
+        if not userID:
+            raise ValueError('Users must have an userID')
+
+        user = self.model(
+            userID=userID,
+            **extra_fields
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, userID, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        user = self.create_user(
+            userID,
+            password=password,
+            **extra_fields
+        )
+
+        user.is_admin = True
+        user.save(using=self._db)
+
+        return user
 
 
 class User(AbstractUser):
@@ -74,3 +106,6 @@ class User(AbstractUser):
     password_quiz_answer = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = CustomUserManager()
+
