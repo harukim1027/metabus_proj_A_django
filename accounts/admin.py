@@ -29,4 +29,6 @@ class CustomUserAdmin(UserAdmin):
     # updated_at: DATETIME NOT NULL
 
     #
-    list_display = ('nickname', 'username', 'is_active', 'phone_number', 'email')
+    list_display = ['userID', 'username', 'is_active']
+    list_display_links = ['userID']
+
