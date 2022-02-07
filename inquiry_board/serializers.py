@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from accounts.models import User
-from adopt_review.models import Review
+from inquiry_board.models import Inquiry
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -9,10 +9,9 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = ["nickname"]
 
 
-class ReviewSerializer(serializers.ModelSerializer):
+class InquirySerializer(serializers.ModelSerializer):
     nickname = AuthorSerializer(read_only=True)
 
     class Meta:
-        model = Review
-        fields = ["number", "nickname", "title", "content", "image"]
-
+        model = Inquiry
+        fields = ["number", "nickname", "title", "content"]
