@@ -54,7 +54,7 @@ class CustomUserManager(UserManager):
 class User(AbstractUser):
     # createsuperuser를 할 시에, 받을 username 필드를 뭘로 지정?
     USERNAME_FIELD = 'userID'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
     first_name = None
     last_name = None
     date_joined = None
