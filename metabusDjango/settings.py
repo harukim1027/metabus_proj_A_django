@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'inquiry_board',  # 문의 게시판
     'notice',  # 공지사항
     'attached_files',  # 공지사항 첨부 파일
-    'images',  # 이미지 파일들
+    'attached_images',  # 이미지 파일들
 
 ]
 
