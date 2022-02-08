@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from accounts.models import User
-from attached_files.models import Attached_file
+from attached_files.models import AttachedFile
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -13,6 +13,6 @@ class AttachedFileSerializer(serializers.ModelSerializer):
     nickname = AuthorSerializer(read_only=True)
 
     class Meta:
-        model = Attached_file
+        model = AttachedFile
         fields = ["notice_no", "att_file_no", "att_file"]
 
