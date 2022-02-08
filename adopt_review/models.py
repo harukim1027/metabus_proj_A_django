@@ -3,6 +3,7 @@ from django.db import models
 from django.core.validators import MinLengthValidator, RegexValidator
 
 from accounts.models import User
+from adopt_assignment.models import AdoptAssignment
 
 
 class TimestampedModel(models.Model):
@@ -23,3 +24,5 @@ class Review(TimestampedModel):
                              ])
     content = models.TextField()
     image = models.ImageField(blank=True)
+    adopt_assignment = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE, blank=False)
+

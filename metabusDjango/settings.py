@@ -43,11 +43,12 @@ INSTALLED_APPS = [
     # local apps
     'streetanimal',  # 유기동물
     'accounts',  # 계정
-    'adopt_review',  # 입양
-    'inquiry_board',  # 문의게시판
+    'adopt_assignment',  # 입양 신청
+    'adopt_review',  # 입양 후기 게시판
+    'inquiry_board',  # 문의 게시판
     'notice',  # 공지사항
-    'attached_files',
-    'images',
+    'attached_files',  # 공지사항 첨부 파일
+    'images',  # 이미지 파일들
 
 ]
 

@@ -10,7 +10,7 @@ class TimestampedModel(models.Model):
         abstract = True
 
 
-class Attached_file(TimestampedModel):
+class AttachedFile(TimestampedModel):
+    att_file_no = models.AutoField(primary_key=True)
     notice_no = models.ForeignKey(Notice, on_delete=models.CASCADE)
-    att_file_no = models.IntegerField(db_index=True, blank=False)
     att_file = models.TextField(blank=False)
