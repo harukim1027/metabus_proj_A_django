@@ -16,5 +16,5 @@ class Notice(TimestampedModel):
     notice_no = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)
     content = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="cy0329")
 

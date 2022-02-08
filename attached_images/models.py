@@ -24,3 +24,4 @@ class Images(TimestampedModel):
     notice_no = models.ForeignKey(Notice, on_delete=models.CASCADE, blank=True)
     review_no = models.ForeignKey(Review, on_delete=models.CASCADE, blank=True)
     assignment_no = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE, blank=True)
+

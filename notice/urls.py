@@ -1,13 +1,14 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from notice.views import NoticeViewSet
 
-from adopt_assignment.views import AssignmentViewSet
 
-app_name = "adopt_assignment"
+app_name = 'notice'
 
 router = DefaultRouter()
-router.register("assignment", AssignmentViewSet)
+router.register("notices", NoticeViewSet)
 
 urlpatterns = [
     path("api/", include(router.urls)),
 ]
+
