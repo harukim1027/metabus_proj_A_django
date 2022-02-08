@@ -52,7 +52,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
         password_quiz = validated_data['password_quiz']
         password_quiz_answer = validated_data['password_quiz_answer']
 
-        new_user = User(usrerID=userID, nickname=nickname, username=username, phone_number=phone_number, email=email,
+        new_user = User(userID=userID, nickname=nickname, username=username, phone_number=phone_number, email=email,
                         region=region, password_quiz=password_quiz,
                         password_quiz_answer=password_quiz_answer)
         new_user.set_password(password)

@@ -61,7 +61,7 @@ class User(AbstractUser):
 
     userID = models.CharField(max_length=18, unique=True, null=False, primary_key=True)
     nickname = models.CharField(max_length=20, unique=True, null=False)
-    name = models.CharField(
+    username = models.CharField(
         max_length=30
         , null=False
     )
