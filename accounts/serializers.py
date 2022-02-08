@@ -64,6 +64,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
 class TokenObtainPairSerializer(OriginTokenObtainPairSerializer):
     def validate(self, attrs):
         data: Dict = super().validate(attrs)
+        data["username"] = self.user.username
         data["nickname"] = self.user.nickname
         return data
 
