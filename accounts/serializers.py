@@ -8,7 +8,16 @@ from rest_framework_simplejwt.serializers import (
     TokenRefreshSerializer as OriginTokenRefreshSerializer,
 )
 
-User = get_user_model()
+from accounts.models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = "__all__"
+
+
+Users = get_user_model()
 
 
 class UserCreationSerializer(serializers.ModelSerializer):
@@ -31,7 +40,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
     #
 
     class Meta:
-        model = User
+        model = Users
         fields = ["userID", "nickname", 'username', "password", "password2", "phone_number", "email", "region",
                   "password_quiz",
                   "password_quiz_answer"]
@@ -52,7 +61,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
         password_quiz = validated_data['password_quiz']
         password_quiz_answer = validated_data['password_quiz_answer']
 
-        new_user = User(userID=userID, nickname=nickname, username=username, phone_number=phone_number, email=email,
+        new_user = Users(userID=userID, nickname=nickname, username=username, phone_number=phone_number, email=email,
                         region=region, password_quiz=password_quiz,
                         password_quiz_answer=password_quiz_answer)
         new_user.set_password(password)
