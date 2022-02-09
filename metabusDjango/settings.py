@@ -73,6 +73,7 @@ if DEBUG:
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -178,8 +179,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INTERNAL_IPS = ['127.0.0.1']
 
-CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS",
-                                default=['http://localhost:3000'])
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:",
+]
+# CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS",
+#                                 default=['http://localhost:3000'])
 
 # djangorestframework
 
@@ -208,6 +214,10 @@ REST_FRAMEWORK = {
 
     )
 
+}
+
+SIMPLE_JWT = {
+    'USER_ID_FIELD': 'userID',
 }
 
 

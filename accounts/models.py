@@ -78,30 +78,30 @@ class User(AbstractUser):
 
     region = models.CharField(
         max_length=7,
-        choices=[
-            ("Seoul", "Seoul"),
-            ("Busan", "Busan"),
-            ("Daegu", "Daegu"),
-            ("Incheon", "Incheon"),
-            ("Daejeon", "Daejeon"),
-            ("Sejong", "Sejong"),
-            ("Gwangju", "Gwangju"),
-            ("Ulsan", "Ulsan"),
-            ("Jeju", "Jeju"),
-            ("Gangwon", "Gangwon"),
-        ],
-        blank=False)
+        choices=(
+            ("1", "Seoul"),
+            ("2", "Busan"),
+            ("3", "Daegu"),
+            ("4", "Incheon"),
+            ("5", "Daejeon"),
+            ("6", "Sejong"),
+            ("7", "Gwangju"),
+            ("8", "Ulsan"),
+            ("9", "Jeju"),
+            ("10", "Gangwon"),
+        ),
+        )
 
     password_quiz = models.CharField(
         max_length=1,
-        choices=[
+        choices=(
             ("1", "내 보물1호는?"),
             ("2", "처음 키운 반려동물 이름은?"),
             ("3", "어머니 성함은?"),
             ("4", "아버지 성함은?"),
             ("5", "좋아하는 음식은?"),
-        ],
-        blank=True)
+        ),
+        )
 
     password_quiz_answer = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
