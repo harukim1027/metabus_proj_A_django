@@ -7,7 +7,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path("accounts/", include("accounts.urls")),
-    path('review/', include("adopt_review.urls")),
+    path('adopt_review/', include("adopt_review.urls")),
     path('adopt_assignment/', include("adopt_assignment.urls")),
     path('inquiry_board/', include("inquiry_board.urls")),
     path('notice/', include("notice.urls")),

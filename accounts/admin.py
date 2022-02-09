@@ -16,6 +16,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
         }),
     )
+    ordering = ("userID",)
 
     # nickname: CHAR(20) NOT NULL
     # name: CHAR(30) NOT NULL
@@ -29,6 +30,6 @@ class CustomUserAdmin(UserAdmin):
     # updated_at: DATETIME NOT NULL
 
     #
-    list_display = ['userID', 'username', 'is_active']
+    list_display = ['userID', 'nickname', 'is_active']
     list_display_links = ['userID']
 
