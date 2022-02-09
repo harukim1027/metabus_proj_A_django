@@ -10,7 +10,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('userID', 'password', 'email', 'phone_number')
         }),
         ('Personal info', {
-            'fields': ('nickname', 'username', 'region', 'password_quiz', 'password_quiz_answer')
+            'fields': ('nickname', 'name', 'region', 'password_quiz', 'password_quiz_answer')
         }),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),

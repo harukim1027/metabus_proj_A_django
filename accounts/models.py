@@ -20,7 +20,7 @@ from django.db import models
 #
 
 class CustomUserManager(UserManager):
-    def create_user(self, userID, password=None, **extra_fields):
+    def create_user(self, userID, username=None, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         if not userID:
@@ -35,7 +35,7 @@ class CustomUserManager(UserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, userID, password=None, **extra_fields):
+    def create_superuser(self, userID, username=None, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -54,14 +54,14 @@ class CustomUserManager(UserManager):
 class User(AbstractUser):
     # createsuperuser를 할 시에, 받을 username 필드를 뭘로 지정?
     USERNAME_FIELD = 'userID'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = ['nickname']
     first_name = None
     last_name = None
     date_joined = None
 
     userID = models.CharField(max_length=18, unique=True, null=False, primary_key=True)
     nickname = models.CharField(max_length=20, unique=True, null=False)
-    username = models.CharField(
+    name = models.CharField(
         max_length=30
         , null=False
     )
