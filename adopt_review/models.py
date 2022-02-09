@@ -16,13 +16,17 @@ class TimestampedModel(models.Model):
 
 class Review(TimestampedModel):
     review_no = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, db_index=True,
                              validators=[
                                  MinLengthValidator(3),
                                  RegexValidator(r"[ㄱ-힣]", message="한글을 입력해주세요."),
                              ])
     content = models.TextField()
-    image = models.ImageField(blank=True)
+    image1 = models.ImageField()
+    image2 = models.ImageField(blank=True)
+    image3 = models.ImageField(blank=True)
+    image4 = models.ImageField(blank=True)
+    image5 = models.ImageField(blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     adopt_assignment = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE, blank=False)
 

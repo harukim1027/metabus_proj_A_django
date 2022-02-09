@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'accounts',  # 계정
     'adopt_assignment',  # 입양 신청
     'adopt_review',  # 입양 후기 게시판
-    'attached_files',  # 공지사항 첨부 파일
-    'attached_images',  # 이미지 파일들
     'inquiry_board',  # 문의 게시판
     'notice',  # 공지사항
 ]
