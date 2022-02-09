@@ -48,6 +48,12 @@ INSTALLED_APPS = [
     'adopt_review',  # 입양 후기 게시판
     'inquiry_board',  # 문의 게시판
     'notice',  # 공지사항
+<<<<<<< HEAD
+=======
+    'attached_files',  # 공지사항 첨부 파일
+    'attached_images',  # 이미지 파일들
+
+>>>>>>> 94d4ad8e72f627daeda2202c5ce5ce11584a09af
 ]
 
 if DEBUG:
