@@ -14,7 +14,7 @@ class TimestampedModel(models.Model):
 
 class Inquiry(TimestampedModel):
     inquiry_no = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="cy0329")
     title = models.CharField(max_length=50)
     content = models.TextField()
     admin_answer = models.TextField(blank=True)

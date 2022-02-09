@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from attached_files.serializers import AttachedFileSerializer
-from attached_files.models import Attached_file
+from attached_files.models import AttachedFile
 
 
 class AttachedFileViewSet(viewsets.ModelViewSet):
-    queryset = Attached_file.objects.all()
+    queryset = AttachedFile.objects.all()
     serializer_class = AttachedFileSerializer

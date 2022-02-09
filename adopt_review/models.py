@@ -16,7 +16,7 @@ class TimestampedModel(models.Model):
 
 class Review(TimestampedModel):
     review_no = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, db_index=True,
                              validators=[
                                  MinLengthValidator(3),
