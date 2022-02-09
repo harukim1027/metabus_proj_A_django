@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 
 
-# #
+#
 # nickname: CHAR(20) NOT NULL
 # name: CHAR(30) NOT NULL
 # password: CHAR(20) NOT NULL
@@ -89,8 +89,7 @@ class User(AbstractUser):
             ("8", "Ulsan"),
             ("9", "Jeju"),
             ("10", "Gangwon"),
-        ),
-        )
+        ), default=1)
 
     password_quiz = models.CharField(
         max_length=1,
@@ -100,12 +99,11 @@ class User(AbstractUser):
             ("3", "어머니 성함은?"),
             ("4", "아버지 성함은?"),
             ("5", "좋아하는 음식은?"),
-        ),
-        )
+        ), default=1
+    )
 
     password_quiz_answer = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = CustomUserManager()
-
