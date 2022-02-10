@@ -11,6 +11,7 @@ class TimestampedModel(models.Model):
 
 class Animal(TimestampedModel):
     animal_no = models.AutoField(primary_key=True)
+    animal_reg_num = models.CharField(max_length=50, unique=True)
     size = models.CharField(max_length=30)
     sex = models.CharField(max_length=30)
     age = models.IntegerField()

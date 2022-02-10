@@ -24,5 +24,5 @@ class Notice(TimestampedModel):
     file1 = models.FileField(blank=True)
     file2 = models.FileField(blank=True)
     file3 = models.FileField(blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="cy0329")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 

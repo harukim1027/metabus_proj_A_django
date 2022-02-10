@@ -28,7 +28,7 @@ class Review(TimestampedModel):
     image4 = models.ImageField(blank=True)
     image5 = models.ImageField(blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    adoptassignment = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE, default=(AdoptAssignment.assignment_no if AdoptAssignment.user == user else 1))
+    adoptassignment = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE)
     # 해결 안된 adoptassignment
 
 
