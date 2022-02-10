@@ -72,6 +72,7 @@ class TokenObtainPairSerializer(OriginTokenObtainPairSerializer):
         data["region"] = self.user.region
         data["password_quiz"] = self.user.password_quiz
         data["password_quiz_answer"] = self.user.password_quiz_answer
+        data["is_staff"] = self.user.is_staff
         return data
 
 
