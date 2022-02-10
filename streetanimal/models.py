@@ -15,7 +15,7 @@ class Animal(TimestampedModel):
     sex = models.CharField(max_length=30)
     age = models.IntegerField()
     date_of_discovery = models.DateTimeField()
-    place_of_discovery = models.DateTimeField()
+    place_of_discovery = models.CharField(max_length=30)
     physical_condition = models.CharField(max_length=200)
     start_date = models.DateField()
     end_date = models.DateField()
