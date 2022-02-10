@@ -6,15 +6,16 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView as OriginTokenObtainPairView,
     TokenRefreshView as OriginTokenRefreshView,
 )
-from accounts.models import User
+
 from accounts.serializers import TokenObtainPairSerializer, UserCreationSerializer, UserSerializer
+
+
+User = get_user_model()
 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-User = get_user_model()
 
 
 class SignupAPIView(CreateAPIView):

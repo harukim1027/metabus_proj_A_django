@@ -28,6 +28,6 @@ class AdoptAssignment(TimestampedModel):
     picture_of_residence2 = models.ImageField()
     picture_of_residence3 = models.ImageField()
     status = models.CharField(max_length=30)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True)
+    animal = models.OneToOneField(Animal, on_delete=models.CASCADE, unique=True)
 

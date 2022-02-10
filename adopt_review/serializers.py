@@ -4,16 +4,7 @@ from adopt_review.models import Review
 from adopt_assignment.serializers import AssignmentSerializer
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = get_user_model()
-        fields = ["userID", "nickname"]
-
-
 class ReviewSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-    adoptassignment = AssignmentSerializer(read_only=True)
-
     class Meta:
         model = Review
         fields = "__all__"
