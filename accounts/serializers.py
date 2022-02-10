@@ -66,6 +66,12 @@ class TokenObtainPairSerializer(OriginTokenObtainPairSerializer):
         data: Dict = super().validate(attrs)
         data["userID"] = self.user.userID
         data["nickname"] = self.user.nickname
+        data["name"] = self.user.name
+        data["phone_number"] = self.user.phone_number
+        data["email"] = self.user.email
+        data["region"] = self.user.region
+        data["password_quiz"] = self.user.password_quiz
+        data["password_quiz_answer"] = self.user.password_quiz_answer
         return data
 
 
