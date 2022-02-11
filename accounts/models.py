@@ -78,7 +78,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=50, unique=True, null=False)
 
     region = models.CharField(
-        max_length=7,
+        max_length=20,
         choices=(
             ("1", "Seoul"),
             ("2", "Busan"),

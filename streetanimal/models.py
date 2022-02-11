@@ -32,4 +32,4 @@ class Animal(TimestampedModel):
         ("2", "입양 매칭 중"),
         ("3", "입양 완료!"),
     ))
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
