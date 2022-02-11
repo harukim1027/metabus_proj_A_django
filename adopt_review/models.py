@@ -22,7 +22,7 @@ class Review(TimestampedModel):
                                  RegexValidator(r"[ㄱ-힣]", message="한글을 입력해주세요."),
                              ])
     content = models.TextField()
-    image1 = models.ImageField()
+    image1 = models.ImageField(blank=True)
     image2 = models.ImageField(blank=True)
     image3 = models.ImageField(blank=True)
     image4 = models.ImageField(blank=True)

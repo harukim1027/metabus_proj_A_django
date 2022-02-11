@@ -12,13 +12,24 @@ class TimestampedModel(models.Model):
 class Animal(TimestampedModel):
     animal_no = models.AutoField(primary_key=True)
     animal_reg_num = models.CharField(max_length=50, unique=True)
-    size = models.CharField(max_length=30)
-    sex = models.CharField(max_length=30)
+    size = models.CharField(max_length=3, choices=(
+        ("1", "소형"),
+        ("2", "중형"),
+        ("3", "대형"),
+    ), default=1)
+    sex = models.CharField(max_length=3, choices=(
+        ("1", "암컷"),
+        ("2", "수컷"),
+    ), default=1)
     age = models.IntegerField()
     date_of_discovery = models.DateTimeField()
     place_of_discovery = models.CharField(max_length=30)
     physical_condition = models.CharField(max_length=200)
     start_date = models.DateField()
     end_date = models.DateField()
-    protection_status = models.CharField(max_length=30)
+    protection_status = models.CharField(max_length=30, choices=(
+        ("1", "입양 대기"),
+        ("2", "입양 매칭 중"),
+        ("3", "입양 완료!"),
+    ))
     image = models.ImageField()

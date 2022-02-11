@@ -22,12 +22,19 @@ class AdoptAssignment(TimestampedModel):
         ("Housing", "Housing"),
         ("Oneroom", "Oneroom"),
         ("Officetel", "Officetel"),
-    ], blank=False)
+    ], default="Apartment")
     have_pet_or_not = models.BooleanField()
     picture_of_residence1 = models.ImageField()
     picture_of_residence2 = models.ImageField()
     picture_of_residence3 = models.ImageField()
-    status = models.CharField(max_length=30)
+    status = models.CharField(max_length=3, choices=(
+        ("1", "신청"),
+        ("2", "심사 중"),
+        ("3", "수락"),
+        ("4", "교육 중"),
+        ("5", "입양 완료"),
+        ("6", "거절"),
+    ), default=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True)
     animal = models.OneToOneField(Animal, on_delete=models.CASCADE, unique=True)
 
