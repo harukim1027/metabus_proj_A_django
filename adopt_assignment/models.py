@@ -28,6 +28,13 @@ class AdoptAssignment(TimestampedModel):
     picture_of_residence1 = models.ImageField()
     picture_of_residence2 = models.ImageField()
     picture_of_residence3 = models.ImageField()
+    place_to_meet = models.CharField(max_length=20, choices=(
+        ("Seoul", "서울 강동구청 반려동물팀"),
+        ("Daejeon", "대전 동물 보호 센터"),
+        ("Saejong", "세종 유기동물 보호센터"),
+        ("Daegu", "대구 유기동물 보호 협회"),
+        ("Busan", "부산 동물보호센터"),
+    ), default="Seoul")
     status = models.CharField(max_length=3, choices=(
         ("1", "신청"),
         ("2", "심사 중"),
