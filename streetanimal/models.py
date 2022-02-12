@@ -32,7 +32,7 @@ class Animal(TimestampedModel):
         ("2", "입양 매칭 중"),
         ("3", "입양 완료!"),
     ), default=1)
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
 
     def __str__(self):
         return self.animal_reg_num
