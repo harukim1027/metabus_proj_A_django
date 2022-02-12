@@ -31,5 +31,13 @@ class Animal(TimestampedModel):
         ("1", "입양 대기"),
         ("2", "입양 매칭 중"),
         ("3", "입양 완료!"),
-    ))
+    ), default=1)
     image = models.ImageField()
+
+    def __str__(self):
+        return self.animal_reg_num
+
+
+class SortOfAnimal(models.Model):
+    pass
+

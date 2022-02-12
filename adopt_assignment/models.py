@@ -15,6 +15,7 @@ class TimestampedModel(models.Model):
 
 class AdoptAssignment(TimestampedModel):
     assignment_no = models.AutoField(primary_key=True)
+    adopter_name = models.CharField(max_length=30, db_index=True)
     monthly_income = models.IntegerField()
     residential_type = models.CharField(max_length=10, choices=[
         ("Apartment", "Apartment"),
@@ -34,7 +35,7 @@ class AdoptAssignment(TimestampedModel):
         ("4", "교육 중"),
         ("5", "입양 완료"),
         ("6", "거절"),
-    ), default=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True)
+    ), default=1, db_index=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     animal = models.OneToOneField(Animal, on_delete=models.CASCADE, unique=True)
 

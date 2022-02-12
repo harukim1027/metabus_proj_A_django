@@ -26,3 +26,11 @@ class ReviewViewSet(viewsets.ModelViewSet):
         # 대신 키워드 인자를 통한 속성 지정을 지원함
         serializer.save(user=self.request.user)
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        query = self.request.query_params.get("query", "")
+        if query:
+            qs = qs.filter(title__icontains=query) or qs.filter(review_no__icontains=query)
+
+        return qs

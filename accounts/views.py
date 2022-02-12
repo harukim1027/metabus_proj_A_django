@@ -17,6 +17,15 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        query = self.request.query_params.get("query", "")
+        if query:
+            qs = qs.filter(userID__icontains=query) or qs.filter(nickname__icontains=query) or qs.filter(name__icontains=query)
+
+        return qs
+
 
 class SignupAPIView(CreateAPIView):
     queryset = User.objects.all()
@@ -30,6 +39,4 @@ class TokenObtainPairView(OriginTokenObtainPairView):
 
 class TokenRefreshView(OriginTokenRefreshView):
     pass
-
-
 
