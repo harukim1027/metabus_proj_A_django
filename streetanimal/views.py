@@ -1,9 +1,9 @@
-from rest_framework.viewsets import ModelViewSet
-from streetanimal.models import Animal
-from streetanimal.serializers import AnimalSerializer
+from rest_framework import viewsets
+from streetanimal.models import Animal, Category
+from streetanimal.serializers import AnimalSerializer, CategorySerializer
 
 
-class AnimalViewSet(ModelViewSet):
+class AnimalViewSet(viewsets.ModelViewSet):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
 
@@ -15,3 +15,8 @@ class AnimalViewSet(ModelViewSet):
             qs = qs.filter(animal_reg_num__icontains=query)
 
         return qs
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

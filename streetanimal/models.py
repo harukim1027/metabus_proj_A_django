@@ -9,7 +9,22 @@ class TimestampedModel(models.Model):
         abstract = True
 
 
+class Category(models.Model):
+    CATEGORY = (
+        ("강아지", "강아지"),
+        ("고양이", "고양이"),
+        ("기타동물", "기타동물"),
+    )
+    name = models.CharField(
+        choices=CATEGORY, db_index=True, verbose_name="품종", max_length=10, unique=True
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class Animal(TimestampedModel):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="동물 종", default=1)
     animal_no = models.AutoField(primary_key=True)
     animal_reg_num = models.CharField(max_length=50, unique=True)
     size = models.CharField(max_length=3, choices=(
@@ -37,7 +52,4 @@ class Animal(TimestampedModel):
     def __str__(self):
         return self.animal_reg_num
 
-
-class SortOfAnimal(models.Model):
-    pass
 
