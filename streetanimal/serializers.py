@@ -5,7 +5,7 @@ from streetanimal.models import Animal
 class AnimalCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Animal
-        field = "__all__"
+        fields = "__all__"
 
 
 class AnimalSerializer(serializers.ModelSerializer):
