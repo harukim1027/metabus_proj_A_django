@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from streetanimal.models import Animal, Category
-from streetanimal.serializers import AnimalSerializer, CategorySerializer, AnimalCreateSerializer
+from streetanimal.models import Animal
+from streetanimal.serializers import AnimalSerializer, AnimalCreateSerializer
 
 
 class AnimalViewSet(viewsets.ModelViewSet):
