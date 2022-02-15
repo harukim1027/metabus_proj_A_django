@@ -78,29 +78,29 @@ class User(AbstractUser):
     email = models.EmailField(max_length=50, unique=True, null=False)
 
     region = models.CharField(
-        max_length=20,
+        max_length=50,
         choices=(
-            ("1", "Seoul"),
-            ("2", "Busan"),
-            ("3", "Daegu"),
-            ("4", "Incheon"),
-            ("5", "Daejeon"),
-            ("6", "Sejong"),
-            ("7", "Gwangju"),
-            ("8", "Ulsan"),
-            ("9", "Jeju"),
-            ("10", "Gangwon"),
-        ), default=1)
+            ("서울", "서울"),
+            ("인천", "인천"),
+            ("대전", "대전"),
+            ("세종", "세종"),
+            ("대구", "대구"),
+            ("부산", "부산"),
+            ("광주", "광주"),
+            ("울산", "울산"),
+            ("제주", "제주"),
+            ("강원", "강원"),
+        ), default="서울")
 
     password_quiz = models.CharField(
-        max_length=1,
+        max_length=100,
         choices=(
-            ("1", "내 보물1호는?"),
-            ("2", "처음 키운 반려동물 이름은?"),
-            ("3", "어머니 성함은?"),
-            ("4", "아버지 성함은?"),
-            ("5", "좋아하는 음식은?"),
-        ), default=1
+            ("내 보물1호는?", "내 보물1호는?"),
+            ("처음 키운 반려동물 이름은?", "처음 키운 반려동물 이름은?"),
+            ("어머니 성함은?", "어머니 성함은?"),
+            ("아버지 성함은?", "아버지 성함은?"),
+            ("좋아하는 음식은?", "좋아하는 음식은?"),
+        ), default="내 보물1호는?"
     )
 
     password_quiz_answer = models.CharField(max_length=30)
