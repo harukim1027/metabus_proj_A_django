@@ -33,8 +33,6 @@ class UserCreationSerializer(serializers.ModelSerializer):
     # created_at: DATETIME NOT NULL
     # updated_at: DATETIME NOT NULL
 
-    #
-
     class Meta:
         model = User
         fields = ["userID", "nickname", 'name', "password", "password2", "phone_number", "email", "region",

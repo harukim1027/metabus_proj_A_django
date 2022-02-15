@@ -1,11 +1,18 @@
 from rest_framework import viewsets
-from inquiry_board.serializers import InquirySerializer
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
+from inquiry_board.serializers import InquirySerializer, InquiryCreateSerializer
 from inquiry_board.models import Inquiry
 
 
 class InquiryViewSet(viewsets.ModelViewSet):
     queryset = Inquiry.objects.all()
-    serializer_class = InquirySerializer
+
+    def get_serializer_class(self):
+        method = self.request.method
+        if method == "GET":
+            return InquirySerializer
+        return InquiryCreateSerializer
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -15,3 +22,9 @@ class InquiryViewSet(viewsets.ModelViewSet):
             qs = qs.filter(title__icontains=query) or qs.filter(inquiry_no__icontains=query)
 
         return qs
+
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny]
+        return [IsAuthenticated()]
+

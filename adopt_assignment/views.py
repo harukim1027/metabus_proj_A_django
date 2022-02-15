@@ -1,12 +1,18 @@
 from rest_framework import viewsets
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from adopt_assignment.models import AdoptAssignment
-from adopt_assignment.serializers import AssignmentSerializer
+from adopt_assignment.serializers import AssignmentSerializer, AssignmentCreateSerializer
 
 
 class AssignmentViewSet(viewsets.ModelViewSet):
     queryset = AdoptAssignment.objects.all()
-    serializer_class = AssignmentSerializer
+
+    def get_serializer_class(self):
+        method = self.request.method
+        if method == "GET":
+            return AssignmentSerializer
+        return AssignmentCreateSerializer
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -16,4 +22,9 @@ class AssignmentViewSet(viewsets.ModelViewSet):
             qs = qs.filter(assignment_no__icontains=query) or qs.filter(adopter_name__icontains=query)
 
         return qs
+
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny]
+        return [IsAuthenticated()]
 

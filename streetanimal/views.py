@@ -1,11 +1,18 @@
 from rest_framework import viewsets
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
 from streetanimal.models import Animal, Category
-from streetanimal.serializers import AnimalSerializer, CategorySerializer
+from streetanimal.serializers import AnimalSerializer, CategorySerializer, AnimalCreateSerializer
 
 
 class AnimalViewSet(viewsets.ModelViewSet):
     queryset = Animal.objects.all()
-    serializer_class = AnimalSerializer
+
+    def get_serializer_class(self):
+        method = self.request.method
+        if method == "GET":
+            return AnimalSerializer
+        return AnimalCreateSerializer
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -16,7 +23,8 @@ class AnimalViewSet(viewsets.ModelViewSet):
 
         return qs
 
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny]
+        return [IsAuthenticated()]
 
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer

@@ -1,11 +1,18 @@
 from rest_framework import viewsets
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
 from notice.models import Notice
-from notice.serializers import NoticeSerializer
+from notice.serializers import NoticeSerializer, NoticeCreateSerializer
 
 
 class NoticeViewSet(viewsets.ModelViewSet):
     queryset = Notice.objects.all()
-    serializer_class = NoticeSerializer
+
+    def get_serializer_class(self):
+        method = self.request.method
+        if method == "GET":
+            return NoticeSerializer
+        return NoticeCreateSerializer
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -15,3 +22,8 @@ class NoticeViewSet(viewsets.ModelViewSet):
             qs = qs.filter(title__icontains=query) or qs.filter(notice_no__icontains=query)
 
         return qs
+
+    def get_permissions(self):
+        if self.request.method == "GET":
+            return [AllowAny]
+        return [IsAuthenticated()]
