@@ -24,6 +24,7 @@ class NoticeViewSet(viewsets.ModelViewSet):
         return qs
 
     def get_permissions(self):
-        if self.request.method == "GET":
+        method = self.request.method
+        if method == "GET":
             return [AllowAny()]
         return [IsAuthenticated()]

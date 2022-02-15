@@ -12,8 +12,7 @@ class AnimalViewSet(viewsets.ModelViewSet):
         method = self.request.method
         if method == "GET":
             return AnimalSerializer
-        else:
-            return AnimalCreateSerializer
+        return AnimalCreateSerializer
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -25,7 +24,8 @@ class AnimalViewSet(viewsets.ModelViewSet):
         return qs
 
     def get_permissions(self):
-        if self.request.method == "GET":
+        method = self.request.method
+        if method == "GET" or method == "PATCH":
             return [AllowAny()]
         return [IsAuthenticated()]
 
