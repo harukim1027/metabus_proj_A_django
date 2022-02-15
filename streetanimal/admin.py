@@ -15,4 +15,3 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display_links = ["name"]
     search_fields = ["name"]
 
-    

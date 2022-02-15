@@ -35,6 +35,7 @@ class AdoptAssignment(TimestampedModel):
         ("Daegu", "대구 유기동물 보호 협회"),
         ("Busan", "부산 동물보호센터"),
     ), default="Seoul")
+    date_to_meet = models.DateField()
     status = models.CharField(max_length=3, choices=(
         ("1", "신청"),
         ("2", "심사 중"),

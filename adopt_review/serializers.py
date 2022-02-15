@@ -8,5 +8,5 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = "__all__"
-
+        depth = 2
 # ["review_no", "title", "content", "image1", "image2", "image3", "image4", "image5", "user", "adoptassignment"]

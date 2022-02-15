@@ -6,4 +6,5 @@ class AssignmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdoptAssignment
         fields = "__all__"
+        depth = 2
 
