@@ -19,7 +19,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
         query = self.request.query_params.get("query", "")
         if query:
-            qs = qs.filter(title__icontains=query) or qs.filter(review_no__icontains=query)
+            qs = qs.filter(title__icontains=query) or qs.filter(review_no__icontains=query) or qs.filter(user__userID__icontains=query)
 
         return qs
 
