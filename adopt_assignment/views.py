@@ -19,7 +19,7 @@ class AssignmentViewSet(viewsets.ModelViewSet):
 
         query = self.request.query_params.get("query", "")
         if query:
-            qs = qs.filter(assignment_no__icontains=query) or qs.filter(adopter_name__icontains=query)
+            qs = qs.filter(assignment_no__icontains=query) or qs.filter(adopter_name__icontains=query) or qs.filter(animal__animal_reg_num__icontains=query) or qs.filter(user__nickname__icontains=query) or qs.filter(user__userID__icontains=query)
 
         return qs
 
