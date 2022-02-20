@@ -100,7 +100,7 @@ class User(AbstractUser):
             ("어머니 성함은?", "어머니 성함은?"),
             ("아버지 성함은?", "아버지 성함은?"),
             ("좋아하는 음식은?", "좋아하는 음식은?"),
-        ), default="내 보물1호는?"
+        ), default="내 보물 1호는?"
     )
 
     password_quiz_answer = models.CharField(max_length=30)
