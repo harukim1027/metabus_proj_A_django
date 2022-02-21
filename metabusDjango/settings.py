@@ -169,29 +169,22 @@ CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=["http://localho
 # 운영하다가도 정책이 바뀔 수 있음
 ACCESS_TOKEN_LIFETIME_DAYS = env.int("ACCESS_TOKEN_LIFETIME_DAYS", default=1)
 ACCESS_TOKEN_LIFETIME_HOURS = env.int("ACCESS_TOKEN_LIFETIME_HOURS", default=1)
-ACCESS_TOKEN_LIFETIME_MINUTES = env.int("ACCESS_TOKEN_LIFETIME_MINUTES", default=20)
+ACCESS_TOKEN_LIFETIME_MINUTES = env.int("ACCESS_TOKEN_LIFETIME_MINUTES", default=3)
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-
     ],
-
-    # 원래 디폴트 만료 시간: 5분
-    # 이렇게 위에 import 한 다음에 이렇게쓰면 ?
-    # 새로 생성되는 토큰의 만료시간은 7일 뒤 !!
-    'ACCESS_TOKEN_LIFETIME': timedelta(
-        days=ACCESS_TOKEN_LIFETIME_DAYS,
-        hours=ACCESS_TOKEN_LIFETIME_HOURS,
-        minutes=ACCESS_TOKEN_LIFETIME_MINUTES,
-
-    )
-
 }
 
 SIMPLE_JWT = {
     'USER_ID_FIELD': 'userID',
+    'ACCESS_TOKEN_LIFETIME': timedelta(
+        days=ACCESS_TOKEN_LIFETIME_DAYS,
+        hours=ACCESS_TOKEN_LIFETIME_HOURS,
+        minutes=ACCESS_TOKEN_LIFETIME_MINUTES,
+    ),
 }
 
 
