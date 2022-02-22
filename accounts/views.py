@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import (
 )
 
 from accounts.serializers import TokenObtainPairSerializer, UserCreationSerializer, UserSerializer
-
+from notice.paginations.Pagination import Pagination
 
 User = get_user_model()
 
@@ -16,6 +16,7 @@ User = get_user_model()
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    pagination_class = Pagination
 
     def get_queryset(self):
         qs = super().get_queryset()

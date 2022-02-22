@@ -3,10 +3,12 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from adopt_review.serializers import ReviewSerializer, ReviewCreateSerializer
 from adopt_review.models import Review
+from notice.paginations.Pagination import Pagination
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
+    pagination_class = Pagination
 
     def get_serializer_class(self):
         method = self.request.method

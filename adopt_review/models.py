@@ -4,6 +4,14 @@ from django.core.validators import MinLengthValidator, RegexValidator
 
 from accounts.models import User
 from adopt_assignment.models import AdoptAssignment
+from django.core.exceptions import ValidationError
+
+
+def validate_image(image):
+    file_size = image.size
+    limit_mb = 1
+    if file_size > limit_mb * 1024 * 1024:
+        raise ValidationError("이미지의 최대 크기는 %s MB 입니다." % limit_mb)
 
 
 class TimestampedModel(models.Model):
@@ -22,11 +30,11 @@ class Review(TimestampedModel):
                                  RegexValidator(r"[ㄱ-힣]", message="한글을 입력해주세요."),
                              ])
     content = models.TextField()
-    image1 = models.ImageField(blank=True)
-    image2 = models.ImageField(blank=True)
-    image3 = models.ImageField(blank=True)
-    image4 = models.ImageField(blank=True)
-    image5 = models.ImageField(blank=True)
+    image1 = models.ImageField(blank=True, validators=[validate_image])
+    image2 = models.ImageField(blank=True, validators=[validate_image])
+    image3 = models.ImageField(blank=True, validators=[validate_image])
+    image4 = models.ImageField(blank=True, validators=[validate_image])
+    image5 = models.ImageField(blank=True, validators=[validate_image])
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     adoptassignment = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE)
     # 해결 안된 adoptassignment

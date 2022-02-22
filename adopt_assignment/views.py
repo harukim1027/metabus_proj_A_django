@@ -3,18 +3,12 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from adopt_assignment.models import AdoptAssignment
 from adopt_assignment.serializers import AssignmentSerializer, AssignmentCreateSerializer
-from rest_framework.pagination import PageNumberPagination
-
-
-# class AssignmentPagination(PageNumberPagination):
-#     page_size = 2
-#     page_size_query_param = 'page_size'
-#     max_page_size = 1
+from notice.paginations.Pagination import Pagination
 
 
 class AssignmentViewSet(viewsets.ModelViewSet):
     queryset = AdoptAssignment.objects.all()
-    # pagination_class = AssignmentPagination
+    pagination_class = Pagination
 
     def get_serializer_class(self):
         method = self.request.method

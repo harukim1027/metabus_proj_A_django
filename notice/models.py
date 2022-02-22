@@ -2,6 +2,14 @@ from django.conf import settings
 from django.db import models
 
 from accounts.models import User
+from django.core.exceptions import ValidationError
+
+
+def validate_image(image):
+    file_size = image.size
+    limit_mb = 1
+    if file_size > limit_mb * 1024 * 1024:
+        raise ValidationError("이미지의 최대 크기는 %s MB 입니다." % limit_mb)
 
 
 class TimestampedModel(models.Model):
@@ -16,11 +24,11 @@ class Notice(TimestampedModel):
     notice_no = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)
     content = models.TextField()
-    image1 = models.ImageField(blank=True)
-    image2 = models.ImageField(blank=True)
-    image3 = models.ImageField(blank=True)
-    image4 = models.ImageField(blank=True)
-    image5 = models.ImageField(blank=True)
+    image1 = models.ImageField(blank=True, validators=[validate_image])
+    image2 = models.ImageField(blank=True, validators=[validate_image])
+    image3 = models.ImageField(blank=True, validators=[validate_image])
+    image4 = models.ImageField(blank=True, validators=[validate_image])
+    image5 = models.ImageField(blank=True, validators=[validate_image])
     file1 = models.FileField(blank=True)
     file2 = models.FileField(blank=True)
     file3 = models.FileField(blank=True)

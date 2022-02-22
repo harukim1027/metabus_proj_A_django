@@ -1,4 +1,12 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+
+
+def validate_image(image):
+    file_size = image.size
+    limit_mb = 1
+    if file_size > limit_mb * 1024 * 1024:
+        raise ValidationError("이미지의 최대 크기는 %s MB 입니다." % limit_mb)
 
 
 class TimestampedModel(models.Model):
@@ -46,7 +54,7 @@ class Animal(TimestampedModel):
         ("입양 매칭 중", "입양 매칭 중"),
         ("입양 완료!", "입양 완료!"),
     ), default="입양 대기")
-    image = models.ImageField(blank=True)
+    image = models.ImageField(blank=True, validators=[validate_image])
 
     def __str__(self):
         return self.animal_reg_num
