@@ -1,12 +1,14 @@
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
+from notice.paginations.Pagination import Pagination
 from streetanimal.models import Animal
 from streetanimal.serializers import AnimalSerializer, AnimalCreateSerializer
 
 
 class AnimalViewSet(viewsets.ModelViewSet):
     queryset = Animal.objects.all()
+    pagination_class = Pagination
 
     def get_serializer_class(self):
         method = self.request.method
