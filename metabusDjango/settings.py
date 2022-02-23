@@ -187,8 +187,6 @@ SIMPLE_JWT = {
     ),
 }
 
-
-
 # gmail 계정, 비밀번호를 json 파일에 두고 호출하는 형식을 위한 함수 구문
 
 secret_file = os.path.join(BASE_DIR, 'secrets.json')
@@ -228,4 +226,5 @@ EMAIL_USE_TLS = True
 # 사이트와 관련한 자동응답을 받을 이메일 주소
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-
+# reset link가 https가 아니라 http로 갈 때]
+SECURE_SSL_REDIRECT = True
