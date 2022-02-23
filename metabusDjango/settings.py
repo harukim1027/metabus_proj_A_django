@@ -2,7 +2,6 @@ from datetime import timedelta
 from pathlib import Path
 from environ import Env
 
-# 비밀번호 변경 구현을 위한 import 문 추가 (os, json -> json파일 로드를 위함)
 import os, json
 from django.core.exceptions import ImproperlyConfigured
 
@@ -54,6 +53,7 @@ if DEBUG:
         'debug_toolbar',
     ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,10 +65,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 if DEBUG:
     MIDDLEWARE = [
-                     'debug_toolbar.middleware.DebugToolbarMiddleware',
-                 ] + MIDDLEWARE
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ] + MIDDLEWARE
+
 
 ROOT_URLCONF = 'metabusDjango.urls'
 
@@ -155,6 +157,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 INTERNAL_IPS = ['127.0.0.1']
 
 CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=["http://localhost:3000"])
@@ -226,5 +229,5 @@ EMAIL_USE_TLS = True
 # 사이트와 관련한 자동응답을 받을 이메일 주소
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# reset link가 https가 아니라 http로 갈 때]
-SECURE_SSL_REDIRECT = True
+# # reset link가 https가 아니라 http로 갈 때]
+# SECURE_SSL_REDIRECT = True
