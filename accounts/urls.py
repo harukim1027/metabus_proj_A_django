@@ -1,12 +1,13 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from accounts.views import TokenObtainPairView, TokenRefreshView, SignupAPIView, UserViewSet
+from accounts.views import TokenObtainPairView, TokenRefreshView, SignupAPIView, UserViewSet, UserPageViewSet
 
 app_name = "accounts"
 
 router = DefaultRouter()
-router.register("users", UserViewSet)
+router.register("usersnotpaging", UserViewSet)
+router.register("users", UserPageViewSet)
 
 urlpatterns = [
     path("api/", include(router.urls)),
