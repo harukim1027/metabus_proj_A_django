@@ -58,8 +58,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
         query = self.request.query_params.get("query", "")
         if query:
-            qs = qs.filter(userID__icontains=query) or qs.filter(nickname__icontains=query) or qs.filter(
-                name__icontains=query)
+            qs = qs.filter(userID__icontains=query) or qs.filter(name__icontains=query) or qs.filter(nickname__icontains=query)
 
         return qs
 
