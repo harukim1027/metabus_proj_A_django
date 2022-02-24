@@ -1,7 +1,9 @@
 from typing import Dict
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import SetPasswordForm
 
 from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 
 from rest_framework import serializers
 
@@ -9,6 +11,8 @@ from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer as OriginTokenObtainPairSerializer,
     TokenRefreshSerializer as OriginTokenRefreshSerializer,
 )
+
+from django import forms
 
 User = get_user_model()
 
@@ -85,3 +89,38 @@ class TokenObtainPairSerializer(OriginTokenObtainPairSerializer):
 class TokenRefreshSerializer(OriginTokenRefreshSerializer):
     pass
 
+
+# 로그인한 상태에서 마이페이지에서 비밀 번호 수정을 위한 View
+class PasswordChangeForm(SetPasswordForm):
+    """
+    A form that lets a user change their password by entering their old
+    password.
+    """
+
+    error_messages = {
+        **SetPasswordForm.error_messages,
+        "password_incorrect":
+            "Your old password was entered incorrectly. Please enter it again."
+        ,
+    }
+    old_password = forms.CharField(
+        label="Old password",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={"autocomplete": "current-password", "autofocus": True}
+        ),
+    )
+
+    field_order = ["old_password", "new_password1", "new_password2"]
+
+    def clean_old_password(self):
+        """
+        Validate that the old_password field is correct.
+        """
+        old_password = self.cleaned_data["old_password"]
+        if not self.user.check_password(old_password):
+            raise ValidationError(
+                self.error_messages["password_incorrect"],
+                code="password_incorrect",
+            )
+        return old_password

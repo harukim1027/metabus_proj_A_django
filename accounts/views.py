@@ -78,16 +78,7 @@ class TokenRefreshView(OriginTokenRefreshView):
     pass
 
 
-# # 메시지 전송 테스트
-# def send_email(request):
-#     subject = "message"
-#     to = ["metabusemail@gmail.com"]
-#     from_email = "metabusemail@gmail.com"
-#     message = "메시지 테스트"
-#     EmailMessage(subject=subject, body=message, to=to, from_email=from_email).send()
-
-
-
+# logout 상태에서 비밀번호 재설정을 눌렀을 때 이메일로 변경링크를 전송하기 위한 view
 #  password 변경을 위한 view 들
 # 기본 auth 뷰를 사용하지 않고, views.py에 기존 형식은 그대로 두되,
 # success_url = reverse_lazy("accounts:password_reset_done") 부분에 app_name 인 accounts 를 추가
@@ -246,7 +237,6 @@ class PasswordResetConfirmView(PasswordContextMixin, FormView):
         return context
 
 
-
 class PasswordResetCompleteView(PasswordContextMixin, TemplateView):
     template_name = "registration/password_reset_complete.html"
     title = "Password reset complete"
@@ -257,6 +247,7 @@ class PasswordResetCompleteView(PasswordContextMixin, TemplateView):
         return context
 
 
+# 마이페이지에서 바꿀 수 있는 view
 class PasswordChangeView(PasswordContextMixin, FormView):
     form_class = PasswordChangeForm
     success_url = reverse_lazy("accounts:password_change_done")
@@ -289,3 +280,7 @@ class PasswordChangeDoneView(PasswordContextMixin, TemplateView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+
+
+
+
