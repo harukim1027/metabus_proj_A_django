@@ -104,7 +104,7 @@ DATABASES = {
         'NAME': 'metabusA',  # DB 이름
         'USER': 'root',
         'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'HOST': '3.37.157.119',
         'PORT': ''
 
     }
