@@ -37,6 +37,7 @@ class Review(TimestampedModel):
     image5 = models.ImageField(blank=True, validators=[validate_image])
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     adoptassignment = models.ForeignKey(AdoptAssignment, on_delete=models.CASCADE)
-    # 해결 안된 adoptassignment
 
+    class Meta:
+        ordering = ['-review_no']
 

@@ -18,3 +18,6 @@ class Inquiry(TimestampedModel):
     content = models.TextField()
     admin_answer = models.TextField(blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['-inquiry_no']

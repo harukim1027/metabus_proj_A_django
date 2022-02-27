@@ -34,3 +34,5 @@ class Notice(TimestampedModel):
     file3 = models.FileField(blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-notice_no']

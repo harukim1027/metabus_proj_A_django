@@ -59,4 +59,5 @@ class Animal(TimestampedModel):
     def __str__(self):
         return self.animal_reg_num
 
-
+    class Meta:
+        ordering = ['-animal_reg_num']

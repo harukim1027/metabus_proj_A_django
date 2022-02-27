@@ -108,3 +108,7 @@ class User(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = CustomUserManager()
+
+    class Meta:
+        ordering = ['userID']
+
