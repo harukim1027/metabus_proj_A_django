@@ -60,4 +60,4 @@ class Animal(TimestampedModel):
         return self.animal_reg_num
 
     class Meta:
-        ordering = ['-animal_reg_num']
+        ordering = ['-animal_no']
