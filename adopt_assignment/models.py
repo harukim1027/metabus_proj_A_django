@@ -38,10 +38,15 @@ class AdoptAssignment(TimestampedModel):
     picture_of_residence3 = models.ImageField(validators=[validate_image])
     place_to_meet = models.CharField(max_length=100, choices=(
         ("서울 강동구청 반려동물팀", "서울 강동구청 반려동물팀"),
+        ("인천 광역시 수의사회", "인천 광역시 수의사회"),
         ("대전 동물 보호 센터", "대전 동물 보호 센터"),
         ("세종 유기동물 보호센터", "세종 유기동물 보호센터"),
         ("대구 유기동물 보호 협회", "대구 유기동물 보호 협회"),
         ("부산 동물보호센터", "부산 동물보호센터"),
+        ("광주 동물 보호소", "광주 동물 보호소"),
+        ("울산 유기동물 보호센터", "울산 유기동물 보호센터"),
+        ("제주 동물 보호센터", "제주 동물 보호센터"),
+        ("속초시 유기동물 보호소", "속초시 유기동물 보호소"),
     ), default="서울 강동구청 반려동물팀")
     date_to_meet = models.DateField()
     status = models.CharField(max_length=50, choices=(
