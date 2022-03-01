@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from django.db.models import Q
 
 from notice.paginations.Pagination import Pagination
 from streetanimal.models import Animal
@@ -21,7 +22,7 @@ class AnimalPageViewSet(viewsets.ModelViewSet):
 
         query = self.request.query_params.get("query", "")
         if query:
-            qs = qs.filter(animal_reg_num__icontains=query)
+            qs = qs.filter(animal_no__icontains=query) or qs.filter(animal_reg_num__icontains=query)
 
         return qs
 
