@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 
 def validate_image(image):
     file_size = image.size
-    limit_mb = 1
+    limit_mb = 3
     if file_size > limit_mb * 1024 * 1024:
         raise ValidationError("이미지의 최대 크기는 %s MB 입니다." % limit_mb)
 
