@@ -4,7 +4,7 @@ from django.db import models
 from accounts.models import User
 from streetanimal.models import Animal
 from django.core.exceptions import ValidationError
-import datetime
+
 
 
 def validate_image(image):
@@ -14,9 +14,10 @@ def validate_image(image):
         raise ValidationError("이미지의 최대 크기는 %s MB 입니다." % limit_mb)
 
 
+
 class TimestampedModel(models.Model):
-    created_at = models.DateField(default=datetime.date.today)
-    updated_at = models.DateField(default=datetime.date.today)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
 
     class Meta:
         abstract = True
