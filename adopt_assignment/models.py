@@ -4,6 +4,7 @@ from django.db import models
 from accounts.models import User
 from streetanimal.models import Animal
 from django.core.exceptions import ValidationError
+import datetime
 
 
 def validate_image(image):
@@ -14,8 +15,8 @@ def validate_image(image):
 
 
 class TimestampedModel(models.Model):
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
 
     class Meta:
         abstract = True
